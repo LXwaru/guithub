@@ -1,8 +1,13 @@
-from fastapi import FastAPI
+from fastapi import (
+    Depends, 
+    FastAPI, 
+    HTTPException, 
+    status
+)
+from routers import (
+    account_routers
+)
+
 
 app = FastAPI()
-
-
-@app.get("/")
-async def root():
-    return {"message": "ugggghhhh!!!"}
+app.include_router(account_routers.router, tags=["Accounts"])
